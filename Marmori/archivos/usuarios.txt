@@ -1,0 +1,3 @@
+{"Usuario":"ksd","Clave":"dsd","Tusuario":""}
+{"Usuario":"sd","Clave":"dsd","Tusuario":"Empleado"}
+{"Usuario":"ksjd","Clave":"sdsd","Tusuario":"Admin"}
