@@ -25,16 +25,20 @@ session_start();
       <h1 class="mt-5"style="color:hsl(0,100%,50%);"><em>Marmori Estacionamientos SA<em></h1>
       <p class="lead"><h2>Primer sistema de estacionamiento con cobro digital</h2></p>
       <p><h4>"El arte de estacionar"</h4></p>
-    </main>
-    <center>
+      
+      <center>
      <img src="img/estacionamiento.png"height=350” width=1000”>
      </center>
 
-
-    <footer class="footer">
-    <?php
+      <?php
         include "componentes/pie.php";
-    ?>
+      ?>
+    
+    </main>
+    
+
+    <footer>
+    
     </footer>
 
     <!-- Bootstrap core JavaScript

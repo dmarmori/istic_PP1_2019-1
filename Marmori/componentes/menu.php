@@ -11,10 +11,7 @@
               if(isset($SESSION['Usuario'])==false)
                 //solo muestra estos item , si el usuario no esta logeado
               {
-            ?>
-            <li class="nav-item active">
-              <a class="nav-link" href="/marmori/paginas/Registro.php">Registrate<span class="sr-only">(current)</span></a>
-            </li> 
+            ?> 
             <li class="nav-item active">
               <a class="nav-link" href="/marmori/paginas/Login.php">Ingresar</a>
             </li> 
@@ -24,7 +21,7 @@
 
 
             <?php
-              if(isset($_SESSION['usuario']))
+              if(isset($_SESSION['Usuario']))
               {
               //solo muestra el menu si estas con la variable de sesión instaciada
             ?> 
@@ -35,10 +32,10 @@
               <a  style="color:red"; class="nav-link" href="Facturar.php">$Facturar</a>
             </li>
             <li class="nav-item active">
-              <a  style="color:green"; class="nav-link" href="ListaUsuario.php">UsuariosRegistrados</a>
+              <a  style="color:green"; class="nav-link" href="ListaUsuario.php">Lista Users</a>
             </li>
             <li class="nav-item active">
-              <a style="color:green"; class="nav-link" href="ListaVehiculo.php">VehiculosIngresados</a>
+              <a style="color:green"; class="nav-link" href="ListaVehiculo.php">Lista Vehiculos</a>
             </li>
 
             <?php
@@ -47,16 +44,18 @@
 
 
             <?php 
-            if(isset($_SESSION['usuario']) && isset($_SESSION['perfil']) &&$_SESSION['perfil']=="admin")
+            if(isset($_SESSION['Usuario']) && isset($_SESSION['Perfil']) &&$_SESSION['Perfil']=="admin")
             {
               //solo muestra el menu si estas con la variable de sesión instaciada y sos de perfil admin
             ?>
-
             <li class="nav-item active">
-              <a  style="color:blue"; class="nav-link" href="HistoricoFacturado.php"> hisctoricoFacturados</a>
+              <a class="nav-link" href="/marmori/paginas/Registro.php">Registrar<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-              <a  style="color:blue"; class="nav-link" href="HistoricoEmpleados.php"> hisctoricoFacturados</a>
+              <a  style="color:blue"; class="nav-link" href="HistoricoFacturado.php"> Historico Users</a>
+            </li>
+            <li class="nav-item active">
+              <a  style="color:blue"; class="nav-link" href="HistoricoEmpleados.php"> Historico Facturados</a>
             </li>
 
             <?php
@@ -67,8 +66,28 @@
               <a class="nav-link disabled" href="/marmori/paginas/MasInfo.php" target="_blank">Mas info</a>
             </li>
           </ul>
-          <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Quien soy" aria-label="Search">
+          <form class="form-inline mt-2 mt-md-0" action="/Marmori/funciones/hacerLogout.php">
+            <input class="form-control mr-sm-2" type="text"
+
+                placeholder=
+                <?php 
+                  if(isset($_SESSION['Usuario']))
+                    //Muestra el usuaio que esta logueado
+                {  
+
+                 ?> 
+                   <?php echo  $_SESSION['Usuario']."-".$_SESSION['Perfil'] ?>
+                <?php 
+                }
+                else
+                {
+                ?>             
+                "Usuario Logeado"
+                <?php 
+                }
+              ?>
+
+            aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Salir</button>
           </form>
         </div>

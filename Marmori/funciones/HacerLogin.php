@@ -1,39 +1,40 @@
 <?php
+	include 'AccesoDatos.php';
 	session_start();
 
 
-	$archivo = fopen("usuarios.txt", "r") or die("Imposible arbrir el archivo");
-	
-		while(!feof($archivo)) 
-		{
-			$objeto = json_decode(fgets($archivo));
-			if ($objeto->Usuario == $_GET['Usuario']) 
-			{				 
-				if ($objeto->Clave == $_GET['Clave'])
-				{
-					$usuariologin = $objeto->Usuario;
-					session_start();
-					$_SESSION['IdLogin']=$usuariologin;
-					header("Location: page/ok.php?login=login");
-					fclose($archivo);
-					exit();
-				}
-				else
-				{
-					
-					header("Location: page/nok.php");
-					fclose($archivo);
-					exit();
-				}
-			}
-			 	
-		}
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("select nombre,clave,tipoUsuario from usuario");
+		$consulta->execute();
+		$datos= $consulta->fetchAll(PDO::FETCH_ASSOC);
 
-		header("Location: page/UsuarioInexistente.php");
-		fclose($archivo);
+		foreach ($datos as $usuario) 
+			{
+				if ($usuario["nombre"] == $_GET['Usuario']) 
+				{				 
+					if ($usuario["clave"] == $_GET['Clave'])
+					{
+		
+						$_SESSION['Usuario']=$usuario["nombre"];
+						$_SESSION['Perfil']=$usuario["tipoUsuario"];
+						header("Location: page/ok.php");
+						exit();
+					}
+					else
+					{
+					
+						//header("Location: page/nok.php");
+						header("Location: ../paginas/login.php?errorClave");
+						exit();
+					}
+				}
+
+			}
+		
+
+		header("Location: ../paginas/login.php?errorUsuario");
 		exit();
 		
-		fclose($archivo);
 	
 	exit();
 

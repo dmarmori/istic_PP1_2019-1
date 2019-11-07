@@ -1,5 +1,8 @@
 <?php
 
+include 'AccesoDatos.php';
+session_start();
+
 $miobjeto=new stdClass();
 $miobjeto->Usuario=$_GET['Usuario'];
 $miobjeto->Clave=$_GET['Clave'];
@@ -7,10 +10,10 @@ $miobjeto->Clave=$_GET['Clave'];
 	switch ($_GET['TipoUsuario'])
 	{
 		case '1':
-			$Tusuario = "Empleado";
+			$Tusuario = "empleado";
 			break;
 		case '2':
-			$Tusuario = "Admin";
+			$Tusuario = "admin";
 			break;
 		default:
 			$Tusuario = "";
@@ -19,9 +22,11 @@ $miobjeto->Clave=$_GET['Clave'];
 
 $miobjeto->Tusuario= $Tusuario;
 
-$archivo=fopen('../archivos/usuarios.txt','a');
-fwrite($archivo,json_encode($miobjeto)."\n");
-fclose($archivo);
+$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+$select="INSERT INTO usuario (nombre, clave, tipoUsuario) VALUES ('$miobjeto->Usuario','$miobjeto->Clave','$miobjeto->Tusuario')";
+$consulta =$objetoAccesoDato->RetornarConsulta($select);
+$consulta->execute();
 
+header("Location: page/RegistroOk.php");
 
 ?>

@@ -57,9 +57,7 @@ session_start();
     </main>
 
     <footer class="footer">
-      <?php
-        include "../componentes/pie.php";
-      ?>
+     
     </footer>
 
     <!-- Bootstrap core JavaScript
