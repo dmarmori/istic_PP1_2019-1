@@ -26,7 +26,7 @@
               //solo muestra el menu si estas con la variable de sesión instaciada
             ?> 
             <li class="nav-item active">
-              <a class="nav-link" href="Vehiculo.php">IngresaVehiculo</a>
+              <a class="nav-link" href="/marmori/paginas/Vehiculo.php">IngresaVehiculo</a>
             </li>
             <li class="nav-item active">
               <a  style="color:red"; class="nav-link" href="Facturar.php">$Facturar</a>
