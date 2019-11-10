@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-11-2019 a las 23:30:20
+-- Tiempo de generación: 11-11-2019 a las 00:33:08
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.1.31
 
@@ -21,6 +21,28 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `istic2019`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facturados`
+--
+
+CREATE TABLE `facturados` (
+  `id` int(11) NOT NULL,
+  `patente` varchar(10) COLLATE utf8_spanish2_ci NOT NULL,
+  `horaIngreso` int(11) NOT NULL,
+  `horaSalida` int(11) NOT NULL,
+  `valorFacturado` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `facturados`
+--
+
+INSERT INTO `facturados` (`id`, `patente`, `horaIngreso`, `horaSalida`, `valorFacturado`) VALUES
+(1, 'IPQ537', 1573424473, 1573428656, 0),
+(2, 'IPQ537', 1573424473, 1573428711, 11700);
 
 -- --------------------------------------------------------
 
@@ -69,6 +91,12 @@ INSERT INTO `vehiculos` (`id`, `patente`, `horario`) VALUES
 --
 
 --
+-- Indices de la tabla `facturados`
+--
+ALTER TABLE `facturados`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -83,6 +111,12 @@ ALTER TABLE `vehiculos`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `facturados`
+--
+ALTER TABLE `facturados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`

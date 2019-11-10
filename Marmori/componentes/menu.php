@@ -29,7 +29,7 @@
               <a class="nav-link" href="/marmori/paginas/Vehiculo.php">IngresaVehiculo</a>
             </li>
             <li class="nav-item active">
-              <a  style="color:red"; class="nav-link" href="Facturar.php">$Facturar</a>
+              <a  style="color:red"; class="nav-link" href="/marmori/paginas/Facturar.php">$Facturar</a>
             </li>
             <li class="nav-item active">
               <a  style="color:green"; class="nav-link" href="ListaUsuario.php">Lista Users</a>
